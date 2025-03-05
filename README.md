@@ -5,12 +5,12 @@
 To develop a neural network regression model for the given dataset.
 
 ## THEORY
-
-Explain the problem statement
+The objective of this project is to develop a Neural Network Regression Model that can accurately predict a target variable based on input features. The model will leverage deep learning techniques to learn intricate patterns from the dataset and provide reliable predictions.
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![nn](https://github.com/user-attachments/assets/7661c962-df9a-4a31-a2c0-c78008678925)
+
 
 ## DESIGN STEPS
 
@@ -43,40 +43,42 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
-### Name:
-### Register Number:
+### Name: Siva Chandran R
+### Register Number: 212222240099
 ```python
-class NeuralNet(nn.Module):
-    def __init__(self):
-        super().__init__()
-        #Include your code here
-
-
-
-# Initialize the Model, Loss Function, and Optimizer
-
-
-
+# Name: Siva Chandran R
+# Register Number: 212222240099
 def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
-    #Include your code here
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        loss = criterion(ai_brain(X_train), y_train)
+        loss.backward()
+        optimizer.step()
 
+        # Append loss inside the loop
+        ai_brain.history['loss'].append(loss.item())
 
+        if epoch % 200 == 0:
+            print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 ```
 ## Dataset Information
 
-Include screenshot of the dataset
+![Screenshot 2025-03-05 213650](https://github.com/user-attachments/assets/221b58ee-754c-49b0-aec0-18a586593417)
+
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![Screenshot 2025-03-05 213909](https://github.com/user-attachments/assets/5af73e9b-37ce-45c6-a801-854ccb6f45c8)
+
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![Screenshot 2025-03-05 213921](https://github.com/user-attachments/assets/23fbacb0-b7d5-4791-b60f-41cd9b1cb0c6)
+
 
 ## RESULT
 
-Include your result here
+The neural network regression model was successfully trained and evaluated. The model demonstrated strong predictive performance on unseen data, with a low error rate.
