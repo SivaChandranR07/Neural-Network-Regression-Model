@@ -48,6 +48,24 @@ Evaluate the model with the testing data.
 ```python
 # Name: Siva Chandran R
 # Register Number: 212222240099
+class NeuralNet(nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.fc1 = nn.Linear(1, 5)
+    self.fc2 = nn.Linear(5, 7)
+    self.fc3 = nn.Linear(7, 1)
+    self.relu = nn.ReLU()
+    self.history = {'loss':[]}
+  def forward(self,x):
+    x=self.relu(self.fc1(x))
+    x=self.relu(self.fc2(x))
+    x=self.fc3(x)
+    return x
+
+ai_brain=NeuralNet()
+criterion=nn.MSELoss()
+optimizer=optim.RMSprop(ai_brain.parameters(),lr=0.001)
+
 def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
     for epoch in range(epochs):
         optimizer.zero_grad()
@@ -55,28 +73,29 @@ def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
         loss.backward()
         optimizer.step()
 
-        # Append loss inside the loop
         ai_brain.history['loss'].append(loss.item())
-
         if epoch % 200 == 0:
             print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 ```
 ## Dataset Information
 
-![Screenshot 2025-03-05 213650](https://github.com/user-attachments/assets/221b58ee-754c-49b0-aec0-18a586593417)
+![image](https://github.com/user-attachments/assets/0a1b7c2b-b4ab-41f2-8a06-7837448ca3c1)
+
 
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-![Screenshot 2025-03-05 213909](https://github.com/user-attachments/assets/5af73e9b-37ce-45c6-a801-854ccb6f45c8)
+![Screenshot 2025-03-17 112423](https://github.com/user-attachments/assets/99e1e326-9a75-471e-8b72-15c4f1b9f50f)
+
 
 
 ### New Sample Data Prediction
 
-![Screenshot 2025-03-05 213921](https://github.com/user-attachments/assets/23fbacb0-b7d5-4791-b60f-41cd9b1cb0c6)
+![image](https://github.com/user-attachments/assets/87cc534d-b842-497c-b69a-57deb5359b6c)
+
 
 
 ## RESULT
